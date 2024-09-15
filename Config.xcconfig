@@ -1,0 +1,10 @@
+//
+//  Config.xcconfig
+//  MiniProj
+//
+//  Created by jhshin on 9/15/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+APIKey = 12345

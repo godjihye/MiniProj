@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0B5C934A2C9714380056CEF1 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0B5C93492C9714380056CEF1 /* Config.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		0B5C93312C97142A0056CEF1 /* MiniProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B5C93492C9714380056CEF1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +50,7 @@
 		0B5C93282C97142A0056CEF1 = {
 			isa = PBXGroup;
 			children = (
+				0B5C93492C9714380056CEF1 /* Config.xcconfig */,
 				0B5C93332C97142A0056CEF1 /* MiniProj */,
 				0B5C93322C97142A0056CEF1 /* Products */,
 			);
@@ -122,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5C934A2C9714380056CEF1 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +201,7 @@
 		};
 		0B5C93472C97142B0056CEF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B5C93492C9714380056CEF1 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
