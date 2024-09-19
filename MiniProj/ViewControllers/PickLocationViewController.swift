@@ -54,4 +54,7 @@ extension PickLocationViewController: UIPickerViewDelegate, UIPickerViewDataSour
             return seoulGuList[row]
         }
     }
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        component == 0 ? 150 : 200
+    }
 }

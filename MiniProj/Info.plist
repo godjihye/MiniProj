@@ -4,6 +4,8 @@
 <dict>
 	<key>APIKey</key>
 	<string>$(APIKey)</string>
+	<key>APIKey_subway</key>
+	<string>$(APIKey_subway)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

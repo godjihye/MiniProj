@@ -33,8 +33,7 @@ class ForecastViewController: UIViewController {
     
     func currentTemp() {
         dateFormatter.dateFormat = "HH00"
-        //let currentTime = dateFormatter.string(from: nowDate)
-        let currentTime = "1100"
+        let currentTime = dateFormatter.string(from: nowDate)
         let currentData = timeBasedData[currentTime]
         if let temp = currentData?["TMP"] {
             lblTemp.text = "\(temp)" + "°C"
@@ -43,13 +42,12 @@ class ForecastViewController: UIViewController {
     
     func search() {
         dateFormatter.dateFormat = "yyyyMMdd"
-        //let convertNowStr = dateFormatter.string(from: nowDate)
-        let convertNowStr = "20240915"
+        let base_date = dateFormatter.string(from: nowDate)
         let nx = coordinate.split(separator: "/")[0]
         let ny = coordinate.split(separator: "/")[1]
         
-        guard let url = URL(string: "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=\(APIKey)&numOfRows=100&pageNo=1&dataType=JSON&base_date=\(convertNowStr)&base_time=0800&nx=\(nx)&ny=\(ny)") else {return}
-        
+        guard let url = URL(string: "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?ServiceKey=\(APIKey)&pageNo=1&numOfRows=200&dataType=JSON&base_date=\(base_date)&base_time=0800&nx=\(nx)&ny=\(ny)") else {return}
+        print("url: \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -59,6 +57,7 @@ class ForecastViewController: UIViewController {
                 return
             }
             guard let data else {return}
+            print(data)
             do {
                 guard let root = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { print("root 오류"); return }
                 guard let resp = root["response"] as? [String : Any] else {print("resp 오류");return}
@@ -160,11 +159,11 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         let timeLbl = cell.viewWithTag(1) as? UILabel
         timeLbl?.text = "\(time.prefix(2)):00"
         let skyLbl = cell.viewWithTag(2) as? UILabel
-        skyLbl?.text = "하늘 : \(skyDescription)"
+        skyLbl?.text = "\(skyDescription)"
         let tmpLbl = cell.viewWithTag(3) as? UILabel
-        tmpLbl?.text = "기온 : \(temperature)°C"
+        tmpLbl?.text = "🌡️ : \(temperature)°C"
         let proLbl = cell.viewWithTag(4) as? UILabel
-        proLbl?.text = "강수확률 : \(precipitationProbability)%"
+        proLbl?.text = "☂ : \(precipitationProbability)%"
         imageView?.image = UIImage(systemName: sysImageName)
         return cell
     }
